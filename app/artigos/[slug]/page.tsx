@@ -1,6 +1,5 @@
 "use client";
 
-export const revalidate = 0;
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -13,12 +12,13 @@ interface Artigo {
   autor: string;
   data: string;
   leitura: string;
-  imagem: string;
+  imagem: string | null;
   categorias: string[];
   conteudo: unknown[];
   origem: string;
 }
 
+// Protegemos a imagem com um "coalesce" para não quebrar a query se não houver foto
 const GROQ_QUERY = `*[_type == "artigo" && slug.current == $slug][0] {
   titulo,
   subtexto,
@@ -31,7 +31,6 @@ const GROQ_QUERY = `*[_type == "artigo" && slug.current == $slug][0] {
   origem
 }`;
 
-// Componentes de renderização do Portable Text
 const portableTextComponents = {
   block: {
     normal: ({ children }: { children?: React.ReactNode }) => (
@@ -103,18 +102,25 @@ export default function ArtigoPage() {
 
   useEffect(() => {
     if (!slug) return;
+    
+    setLoading(true);
+    setNotFound(false);
+
     sanity
       .fetch<Artigo>(GROQ_QUERY, { slug })
       .then((data) => {
-        if (!data) setNotFound(true);
-        else setArtigo(data);
+        if (!data) {
+          setNotFound(true);
+        } else {
+          setArtigo(data);
+        }
       })
-      .catch(() => setNotFound(true))
+      .catch((err) => {
+        console.error("Erro ao buscar no Sanity:", err);
+        setNotFound(true);
+      })
       .finally(() => setLoading(false));
   }, [slug]);
-
-  // Determina se é artigo da Atalaia ou da Academia
-  const isAtalaia = artigo?.origem === "atalaia" || true; // por defeito usa estilo Atalaia
 
   if (loading) {
     return (
@@ -141,7 +147,6 @@ export default function ArtigoPage() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#fff0f0", fontFamily: "sans-serif" }}>
-
       {/* HEADER SIMPLES */}
       <header style={{
         background: "#7b1b38",
@@ -195,9 +200,8 @@ export default function ArtigoPage() {
 
       {/* CONTEÚDO DO ARTIGO */}
       <article style={{ maxWidth: "780px", margin: "0 auto", padding: "60px 40px 100px 40px" }}>
-
         {/* CATEGORIAS */}
-        {artigo.categorias?.length > 0 && (
+        {artigo.categorias && artigo.categorias.length > 0 && (
           <div style={{ display: "flex", gap: "10px", marginBottom: "24px", flexWrap: "wrap" }}>
             {artigo.categorias.map((cat, idx) => (
               <span key={idx} style={{
@@ -272,9 +276,9 @@ export default function ArtigoPage() {
         {artigo.conteudo && artigo.conteudo.length > 0 ? (
           <div style={{ fontSize: "1.05rem", lineHeight: "1.9" }}>
             <PortableText
-            value={artigo.conteudo as Parameters<typeof PortableText>[0]["value"]}
-            components={portableTextComponents as never}
-          />
+              value={artigo.conteudo as Parameters<typeof PortableText>[0]["value"]}
+              components={portableTextComponents as never}
+            />
           </div>
         ) : (
           <p style={{ color: "#888", fontStyle: "italic" }}>
@@ -308,7 +312,6 @@ export default function ArtigoPage() {
             © 2026 Academia Vicentina
           </span>
         </div>
-
       </article>
     </div>
   );
