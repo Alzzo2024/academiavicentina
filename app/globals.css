@@ -21,18 +21,10 @@ body, html {
 }
 
 /* --- BARRA DE SCROLL CUSTOMIZADA --- */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #F3F3F3;
-}
-::-webkit-scrollbar-thumb {
-  background: #011F5B;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #CF1B37;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #F3F3F3; }
+::-webkit-scrollbar-thumb { background: #011F5B; }
+::-webkit-scrollbar-thumb:hover { background: #CF1B37; }
 
 /* --- CLASSES DE TIPOGRAFIA --- */
 .font-serif-title {
@@ -55,6 +47,7 @@ body, html {
   align-items: center;
   justify-content: center;
   padding: 0 60px;
+  box-sizing: border-box;
 }
 
 .hero-layout {
@@ -87,18 +80,14 @@ body, html {
   transform: translateX(5px);
 }
 
-.hero-center-box {
-  justify-self: center;
-}
+.hero-center-box { justify-self: center; }
 
 .logo-center-img {
   max-height: 240px;
   width: auto;
 }
 
-.hero-right-box {
-  justify-self: end;
-}
+.hero-right-box { justify-self: end; }
 
 /* --- BOTÕES HOLLOW --- */
 .btn-hollow {
@@ -140,11 +129,10 @@ body, html {
   z-index: 999;
   transform: translateY(-100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
-.fixed-header.visible {
-  transform: translateY(0);
-}
+.fixed-header.visible { transform: translateY(0); }
 
 .header-inner {
   max-width: 1400px;
@@ -154,11 +142,10 @@ body, html {
   align-items: center;
   padding: 0 40px;
   height: 85px;
+  box-sizing: border-box;
 }
 
-.header-inner nav {
-  justify-self: start;
-}
+.header-inner nav { justify-self: start; }
 
 .header-inner ul {
   display: flex;
@@ -177,22 +164,11 @@ body, html {
   transition: color 0.3s;
 }
 
-.header-inner ul a:hover {
-  color: #FFC700;
-}
+.header-inner ul a:hover { color: #FFC700; }
 
-.header-inner .logo-center-wrap {
-  justify-self: center;
-}
-
-.header-inner .logo-img {
-  height: 55px;
-  width: auto;
-}
-
-.header-inner .header-right-wrap {
-  justify-self: end;
-}
+.header-inner .logo-center-wrap { justify-self: center; }
+.header-inner .logo-img { height: 55px; width: auto; }
+.header-inner .header-right-wrap { justify-self: end; }
 
 .header-divider-line {
   height: 1px;
@@ -201,15 +177,77 @@ body, html {
   transition: background-color 0.4s ease;
 }
 
-.fixed-header.visible .header-divider-line {
-  background-color: #FFC700;
+.fixed-header.visible .header-divider-line { background-color: #FFC700; }
+
+/* --- HAMBURGER ACADEMIA --- */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #F3F3F3;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #011F5B;
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.mobile-menu.aberto { display: flex; }
+
+.mobile-menu a, .mobile-menu-link {
+  color: rgba(243, 243, 243, 0.8);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  font-family: 'Cinzel', serif;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-menu a:hover, .mobile-menu-link:hover { color: #FFC700; }
+
+.mobile-menu-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: #F3F3F3;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
 }
 
 /* --- MARQUEE --- */
 .marquee-container {
   background-color: #CF1B37;
-  border-top: 2px solid #FFC700; 
-  border-bottom: 2px solid #FFC700; 
+  border-top: 2px solid #FFC700;
+  border-bottom: 2px solid #FFC700;
   padding: 18px 0;
   overflow: hidden;
   position: relative;
@@ -246,12 +284,13 @@ body, html {
   background: linear-gradient(rgba(1, 31, 91, 0.72), rgba(10, 10, 10, 0.96)),
               url('/img/saovicentemartir.png') no-repeat center center/cover;
   background-blend-mode: multiply;
+  box-sizing: border-box;
 }
 
 .section-sobre h2 {
-  font-size: 2.8rem; 
-  font-weight: 700; 
-  text-transform: uppercase; 
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: #FFC700;
   margin-bottom: 35px;
 }
@@ -266,16 +305,17 @@ body, html {
 
 /* --- SECÇÃO ARTIGOS --- */
 .section-artigos {
-  background-color: #011F5B; 
+  background-color: #011F5B;
   padding: 120px 40px;
-  border-top: 2px solid #FFC700; 
-  border-bottom: 2px solid #FFC700; 
+  border-top: 2px solid #FFC700;
+  border-bottom: 2px solid #FFC700;
+  box-sizing: border-box;
 }
 
 .section-artigos h2 {
-  font-size: 2.6rem; 
-  font-weight: 700; 
-  text-transform: uppercase; 
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: #FFC700;
   text-align: center;
   margin: 0 0 50px 0;
@@ -290,15 +330,15 @@ body, html {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .artigo-vertical-card {
-  background: transparent; 
-  border: 2px solid #FFFFFF; 
+  background: transparent;
+  border: 2px solid #FFFFFF;
   text-decoration: none;
   width: 100%;
-  max-width: 360px; 
+  max-width: 360px;
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -307,7 +347,7 @@ body, html {
 
 .artigo-vertical-card:hover {
   transform: translateY(-6px);
-  border-color: #FFC700; 
+  border-color: #FFC700;
   box-shadow: 0 12px 30px rgba(255, 199, 0, 0.1);
 }
 
@@ -330,7 +370,7 @@ body, html {
 .artigo-subtext-fade {
   font-size: 0.95rem;
   color: #F3F3F3;
-  opacity: 0.7; 
+  opacity: 0.7;
   line-height: 1.7;
   margin: 0 0 20px 0;
 }
@@ -371,12 +411,13 @@ body, html {
   background-color: #011F5B;
   padding: 120px 40px;
   color: #F3F3F3;
+  box-sizing: border-box;
 }
 
 .section-atividades h2 {
-  font-size: 2.6rem; 
-  font-weight: 700; 
-  text-transform: uppercase; 
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: #FFC700;
   text-align: center;
   margin: 0;
@@ -391,15 +432,12 @@ body, html {
 }
 
 @media (min-width: 768px) {
-  .atividades-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .atividades-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* Removidos os efeitos de transform e movimento no hover dos cards */
 .atividade-card-master {
   position: relative;
-  border: 1px solid #FFFFFF; 
+  border: 1px solid #FFFFFF;
   padding: 60px 30px;
   text-align: center;
   cursor: pointer;
@@ -412,20 +450,13 @@ body, html {
   box-sizing: border-box;
 }
 
-.atividade-card-master.card-artes {
-  background-image: url('/img/filosofiaimagem.png');
-}
-
-.atividade-card-master.card-estrategia {
-  background-image: url('/img/jogosimagem.png');
-}
+.atividade-card-master.card-artes { background-image: url('/img/filosofiaimagem.png'); }
+.atividade-card-master.card-estrategia { background-image: url('/img/jogosimagem.png'); }
 
 .card-tint-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: linear-gradient(rgba(1, 31, 91, 0.75), rgba(10, 10, 10, 0.94));
   z-index: 1;
 }
@@ -440,13 +471,12 @@ body, html {
 }
 
 .logo-activity-icon {
-  height: 75px; 
+  height: 75px;
   width: auto;
   margin-bottom: 25px;
   opacity: 0.95;
 }
 
-/* Container de Sub-Blocos com Animação Fluida de Abrir/Fechar */
 .sub-blocos-container {
   width: 100%;
   max-height: 0;
@@ -456,18 +486,17 @@ body, html {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.3s ease, 
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease,
               margin-top 0.4s ease;
 }
 
 .sub-blocos-container.aberto {
-  max-height: 300px; /* Altura máxima para permitir a transição fluida */
+  max-height: 300px;
   opacity: 1;
   margin-top: 25px;
 }
 
-/* Novo Estilo Estático: Fundo Amarelo, Letras Pretas (#101010) */
 .sub-bloco-rect {
   background-color: #FFC700;
   padding: 18px;
@@ -485,7 +514,7 @@ body, html {
 .main-footer {
   background-color: #011F5B;
   color: #F3F3F3;
-  border-top: 2px solid #FFC700; 
+  border-top: 2px solid #FFC700;
 }
 
 .footer-container {
@@ -496,18 +525,12 @@ body, html {
   align-items: center;
   justify-content: center;
   padding: 60px 40px 30px 40px;
+  box-sizing: border-box;
 }
 
-.footer-logo-wrap {
-  margin-bottom: 25px;
-}
+.footer-logo-wrap { margin-bottom: 25px; }
+.logo-footer-img { height: 45px; width: auto; }
 
-.logo-footer-img {
-  height: 45px;
-  width: auto;
-}
-
-/* Alinhamento Lado a Lado para os Quadrados das Redes Sociais */
 .footer-social-row {
   display: flex;
   gap: 15px;
@@ -526,11 +549,7 @@ body, html {
   text-decoration: none;
 }
 
-.footer-social-square i {
-  font-size: 1.4rem;
-  display: inline-block;
-  line-height: 1;
-}
+.footer-social-square i { font-size: 1.4rem; display: inline-block; line-height: 1; }
 
 .footer-social-square:hover {
   border-color: #FFC700;
@@ -558,7 +577,7 @@ body, html {
 }
 
 /* ==========================================================================
-   SISTEMA DE CORES E FONTES UNIFICADAS - ATALAIA (COMPLETO)
+   ATALAIA
    ========================================================================== */
 
 .atalaia-body {
@@ -568,7 +587,6 @@ body, html {
   font-family: 'Cinzel', serif;
 }
 
-/* 1. HERO INICIAL (CORRIGIDO) */
 .atalaia-hero {
   height: 100vh;
   background-color: #7b1b38;
@@ -578,6 +596,7 @@ body, html {
   padding: 0 60px;
   position: relative;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .atalaia-hero-layout {
@@ -588,9 +607,7 @@ body, html {
   align-items: center;
 }
 
-.atalaia-hero-left {
-  justify-self: start;
-}
+.atalaia-hero-left { justify-self: start; }
 
 .atalaia-back-link {
   color: #fff0f0;
@@ -600,9 +617,7 @@ body, html {
   transition: color 0.3s ease;
 }
 
-.atalaia-back-link:hover {
-  color: #d9b535;
-}
+.atalaia-back-link:hover { color: #d9b535; }
 
 .atalaia-hero-center {
   display: flex;
@@ -610,14 +625,8 @@ body, html {
   align-items: center;
 }
 
-.atalaia-hero-logo {
-  max-height: 220px;
-  width: auto;
-}
-
-.atalaia-hero-right {
-  justify-self: end;
-}
+.atalaia-hero-logo { max-height: 220px; width: auto; }
+.atalaia-hero-right { justify-self: end; }
 
 .atalaia-btn {
   background: transparent;
@@ -636,16 +645,12 @@ body, html {
   z-index: 20;
 }
 
-.atalaia-btn:hover {
-  background-color: #d9b535;
-  color: #7b1b38;
-}
+.atalaia-btn:hover { background-color: #d9b535; color: #7b1b38; }
 
-/* 2. FIXED HEADER DUPLO */
+/* FIXED HEADER ATALAIA */
 .atalaia-fixed-header {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   background-color: #7b1b38;
   z-index: 9999;
@@ -653,12 +658,10 @@ body, html {
   visibility: hidden;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
-.atalaia-fixed-header.visible {
-  transform: translateY(0);
-  visibility: visible;
-}
+.atalaia-fixed-header.visible { transform: translateY(0); visibility: visible; }
 
 .atalaia-header-top {
   max-width: 1400px;
@@ -668,17 +671,11 @@ body, html {
   align-items: center;
   padding: 0 40px;
   height: 75px;
+  box-sizing: border-box;
 }
 
-.atalaia-brand-link {
-  display: flex;
-  align-items: center;
-}
-
-.atalaia-header-logo {
-  height: 50px;
-  width: auto;
-}
+.atalaia-brand-link { display: flex; align-items: center; }
+.atalaia-header-logo { height: 50px; width: auto; }
 
 .atalaia-divider {
   height: 1px;
@@ -689,6 +686,7 @@ body, html {
 .atalaia-header-bottom {
   background-color: #7b1b38;
   padding: 12px 40px;
+  box-sizing: border-box;
 }
 
 .atalaia-nav {
@@ -716,19 +714,84 @@ body, html {
   gap: 6px;
 }
 
-.atalaia-nav-link:hover, .atalaia-dropdown-btn:hover {
-  color: #d9b535;
+.atalaia-nav-link:hover, .atalaia-dropdown-btn:hover { color: #d9b535; }
+
+/* HAMBURGER ATALAIA */
+.atalaia-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.atalaia-hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #fff0f0;
+  transition: all 0.3s ease;
+}
+
+.atalaia-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #7b1b38;
+  z-index: 99999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+}
+
+.atalaia-mobile-menu.aberto { display: flex; }
+
+.atalaia-mobile-menu a,
+.atalaia-mobile-menu button {
+  color: #fff0f0;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  font-family: 'Cinzel', serif;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.atalaia-mobile-menu a:hover,
+.atalaia-mobile-menu button:hover { color: #d9b535; }
+
+.atalaia-mobile-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: #fff0f0;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.atalaia-mobile-divider {
+  width: 60px;
+  height: 1px;
+  background-color: rgba(217, 181, 53, 0.4);
 }
 
 /* Dropdowns */
-.atalaia-dropdown {
-  position: relative;
-}
+.atalaia-dropdown { position: relative; }
 
 .atalaia-dropdown-content {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: 100%; left: 0;
   background-color: #7b1b38;
   border: 1px solid rgba(217, 181, 53, 0.3);
   min-width: 220px;
@@ -765,19 +828,15 @@ body, html {
   padding-left: 25px;
 }
 
-.arrow {
-  font-size: 0.6rem;
-  transition: transform 0.2s ease;
-}
-.arrow.up {
-  transform: rotate(180deg);
-}
+.arrow { font-size: 0.6rem; transition: transform 0.2s ease; }
+.arrow.up { transform: rotate(180deg); }
 
-/* 3. CONTEÚDO PRINCIPAL E ARTIGOS (FORMATADO) */
+/* CONTEÚDO ATALAIA */
 .atalaia-main-content {
   max-width: 1300px;
   margin: 0 auto;
   padding: 80px 40px;
+  box-sizing: border-box;
 }
 
 .atalaia-section-title {
@@ -790,7 +849,6 @@ body, html {
   padding-bottom: 10px;
 }
 
-/* Cartão em Destaque */
 .atalaia-featured-card {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -801,9 +859,7 @@ body, html {
   transition: transform 0.3s ease;
 }
 
-.atalaia-featured-card:hover {
-  transform: translateY(-4px);
-}
+.atalaia-featured-card:hover { transform: translateY(-4px); }
 
 .atalaia-featured-img-area {
   position: relative;
@@ -812,11 +868,7 @@ body, html {
   overflow: hidden;
 }
 
-.atalaia-featured-img-area img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.atalaia-featured-img-area img { width: 100%; height: 100%; object-fit: cover; }
 
 .atalaia-featured-info {
   padding: 50px;
@@ -825,12 +877,7 @@ body, html {
   justify-content: center;
 }
 
-/* Badges e Meta */
-.atalaia-tags-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+.atalaia-tags-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 
 .atalaia-tag-badge {
   background-color: #7b1b38;
@@ -849,29 +896,9 @@ body, html {
   font-size: 0.65rem;
 }
 
-.atalaia-article-title {
-  font-size: 2rem;
-  color: #7b1b38;
-  margin: 0 0 15px 0;
-  line-height: 1.3;
-}
-
-.atalaia-article-summary {
-  font-family: sans-serif;
-  color: #444444;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.atalaia-article-meta {
-  font-size: 0.8rem;
-  color: #777777;
-  display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
-  text-transform: uppercase;
-}
+.atalaia-article-title { font-size: 2rem; color: #7b1b38; margin: 0 0 15px 0; line-height: 1.3; }
+.atalaia-article-summary { font-family: sans-serif; color: #444444; font-size: 1rem; line-height: 1.6; margin-bottom: 30px; }
+.atalaia-article-meta { font-size: 0.8rem; color: #777777; display: flex; gap: 10px; margin-bottom: 25px; text-transform: uppercase; flex-wrap: wrap; }
 
 .atalaia-read-more {
   color: #7b1b38;
@@ -881,14 +908,11 @@ body, html {
   transition: padding-left 0.3s ease;
 }
 
-.atalaia-read-more:hover {
-  padding-left: 8px;
-}
+.atalaia-read-more:hover { padding-left: 8px; }
 
-/* Grid de Artigos Menores */
 .atalaia-articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
 }
 
@@ -899,31 +923,13 @@ body, html {
   transition: transform 0.3s ease;
 }
 
-.atalaia-mini-card:hover {
-  transform: translateY(-5px);
-}
+.atalaia-mini-card:hover { transform: translateY(-5px); }
 
-.atalaia-mini-img {
-  height: 240px;
-  width: 100%;
-}
+.atalaia-mini-img { height: 240px; width: 100%; }
+.atalaia-mini-img img { width: 100%; height: 100%; object-fit: cover; }
 
-.atalaia-mini-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.atalaia-mini-content {
-  padding: 25px;
-}
-
-.atalaia-mini-content h4 {
-  font-size: 1.3rem;
-  color: #7b1b38;
-  margin: 15px 0;
-  line-height: 1.4;
-}
+.atalaia-mini-content { padding: 25px; }
+.atalaia-mini-content h4 { font-size: 1.3rem; color: #7b1b38; margin: 15px 0; line-height: 1.4; }
 
 .atalaia-link-simple {
   color: #7b1b38;
@@ -934,7 +940,6 @@ body, html {
   letter-spacing: 1px;
 }
 
-/* Botão Ver Mais */
 .atalaia-btn-dark {
   background-color: #7b1b38;
   color: #fff0f0;
@@ -947,16 +952,9 @@ body, html {
   transition: background-color 0.3s ease;
 }
 
-.atalaia-btn-dark:hover {
-  background-color: #d9b535;
-  color: #7b1b38;
-}
+.atalaia-btn-dark:hover { background-color: #d9b535; color: #7b1b38; }
 
-/* 4. SECÇÃO EDIÇÕES / REVISTA */
-.atalaia-magazine-section {
-  margin-top: 100px;
-  text-align: center;
-}
+.atalaia-magazine-section { margin-top: 100px; text-align: center; }
 
 .atalaia-red-divider {
   height: 2px;
@@ -965,11 +963,7 @@ body, html {
   margin: 0 auto 30px auto;
 }
 
-.atalaia-magazine-title {
-  font-size: 2.5rem;
-  color: #7b1b38;
-  margin-bottom: 30px;
-}
+.atalaia-magazine-title { font-size: 2.5rem; color: #7b1b38; margin-bottom: 30px; }
 
 .atalaia-coming-soon-box {
   background-color: rgba(123, 27, 56, 0.05);
@@ -979,20 +973,16 @@ body, html {
   margin: 0 auto;
 }
 
-.atalaia-coming-soon-box p {
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  color: #7b1b38;
-  margin: 0;
-}
+.atalaia-coming-soon-box p { font-size: 1.1rem; letter-spacing: 1px; color: #7b1b38; margin: 0; }
 
-/* 5. FOOTER EXCLUSIVO ATALAIA (CORRIGIDO) */
+/* FOOTER ATALAIA */
 .atalaia-footer {
   background-color: #7b1b38;
   color: #fff0f0;
   padding: 60px 40px 20px 40px;
   margin-top: 120px;
   border-top: 3px solid #d9b535;
+  box-sizing: border-box;
 }
 
 .atalaia-footer-container {
@@ -1004,29 +994,11 @@ body, html {
   padding-bottom: 40px;
 }
 
-.atalaia-footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+.atalaia-footer-brand { display: flex; flex-direction: column; gap: 15px; }
+.atalaia-footer-logo { height: 70px; width: auto; align-self: flex-start; }
+.atalaia-footer-credo { font-style: italic; font-size: 0.9rem; color: rgba(255, 240, 240, 0.7); }
 
-.atalaia-footer-logo {
-  height: 70px;
-  width: auto;
-  align-self: flex-start;
-}
-
-.atalaia-footer-credo {
-  font-style: italic;
-  font-size: 0.9rem;
-  color: rgba(255, 240, 240, 0.7);
-}
-
-.atalaia-footer-links, .atalaia-footer-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+.atalaia-footer-links, .atalaia-footer-contact { display: flex; flex-direction: column; gap: 12px; }
 
 .atalaia-footer-links h4, .atalaia-footer-contact h4 {
   color: #d9b535;
@@ -1036,22 +1008,9 @@ body, html {
   letter-spacing: 1px;
 }
 
-.atalaia-footer-links a {
-  color: #fff0f0;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
-}
-
-.atalaia-footer-links a:hover {
-  color: #d9b535;
-}
-
-.atalaia-footer-contact p {
-  font-size: 0.9rem;
-  margin: 0;
-  color: rgba(255, 240, 240, 0.9);
-}
+.atalaia-footer-links a { color: #fff0f0; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+.atalaia-footer-links a:hover { color: #d9b535; }
+.atalaia-footer-contact p { font-size: 0.9rem; margin: 0; color: rgba(255, 240, 240, 0.9); }
 
 .atalaia-footer-bottom {
   max-width: 1300px;
@@ -1061,28 +1020,6 @@ body, html {
   text-align: center;
   font-size: 0.8rem;
   color: rgba(255, 240, 240, 0.5);
-}
-
-/* Responsivo para Telas Menores */
-@media (max-width: 968px) {
-  .atalaia-featured-card {
-    grid-template-columns: 1fr;
-  }
-  .atalaia-featured-img-area {
-    height: 300px;
-  }
-  .atalaia-footer-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .atalaia-hero-layout {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    text-align: center;
-  }
-  .atalaia-hero-left, .atalaia-hero-right {
-    justify-self: center;
-  }
 }
 
 .atalaia-dropdown-content button {
@@ -1106,4 +1043,107 @@ body, html {
   background-color: rgba(217, 181, 53, 0.1);
   color: #d9b535;
   padding-left: 25px;
+}
+
+/* ==========================================================================
+   RESPONSIVO MOBILE — ACADEMIA
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* Hero Academia */
+  .hero-initial { padding: 0 24px; }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    gap: 30px;
+  }
+
+  .hero-nav-left { display: none; }
+  .hero-right-box { display: none; }
+  .hero-center-box { justify-self: center; }
+  .logo-center-img { max-height: 160px; }
+
+  /* Header fixo Academia */
+  .header-inner {
+    padding: 0 20px;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .header-inner nav { display: none; }
+  .header-inner .header-right-wrap { display: none; }
+  .hamburger-btn { display: flex; justify-self: end; }
+
+  /* Secções */
+  .section-sobre { padding: 80px 24px; }
+  .section-sobre h2 { font-size: 1.8rem; }
+  .section-sobre p { font-size: 1rem; }
+
+  .section-artigos { padding: 80px 24px; }
+  .section-artigos h2 { font-size: 1.8rem; }
+  .artigo-vertical-card { max-width: 100%; }
+
+  .section-atividades { padding: 80px 24px; }
+  .section-atividades h2 { font-size: 1.8rem; }
+
+  /* Footer Academia */
+  .footer-container { padding: 40px 24px 20px 24px; }
+}
+
+/* ==========================================================================
+   RESPONSIVO MOBILE — ATALAIA
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* Hero Atalaia */
+  .atalaia-hero { padding: 0 24px; }
+
+  .atalaia-hero-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .atalaia-hero-left { justify-self: center; }
+  .atalaia-hero-right { justify-self: center; }
+  .atalaia-hero-logo { max-height: 150px; }
+
+  /* Header fixo Atalaia — esconde nav desktop, mostra hamburger */
+  .atalaia-header-top { padding: 0 20px; }
+  .atalaia-header-bottom { display: none; }
+  .atalaia-hamburger { display: flex; }
+
+  /* Conteúdo Atalaia */
+  .atalaia-main-content { padding: 40px 20px; }
+  .atalaia-section-title { font-size: 1.5rem; }
+
+  .atalaia-featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .atalaia-featured-img-area { height: 240px; }
+
+  .atalaia-featured-info { padding: 25px; }
+
+  .atalaia-article-title { font-size: 1.4rem; }
+
+  .atalaia-articles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atalaia-coming-soon-box { padding: 40px 20px; }
+
+  /* Footer Atalaia */
+  .atalaia-footer { padding: 40px 24px 20px 24px; }
+  .atalaia-footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .atalaia-magazine-title { font-size: 1.8rem; }
 }
